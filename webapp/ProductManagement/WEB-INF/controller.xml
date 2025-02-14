@@ -46,14 +46,17 @@ under the License.
         <response name="success" type="view" value="main" />
     </request-map>
 
-    <request-map uri="fetchProductList">
+    <request-map uri="FindProduct">
         <security https="true" auth="true" />
         <event type="service" invoke="fetchProductListByGroovy"/>
-        <response name="success" type="view" value="json" />
+        <response name="success" type="view" value="screenrender" />
+        
     </request-map>
-
 
     <!-- View Mappings -->
     <view-map name="main" type="screen"
         page="component://ProductManagement/widget/ProductManagementScreens.xml#main" />
+
+    <view-map name="screenrender" type="screen"
+        page="component://ProductManagement/widget/ProductManagementScreens.xml#Datascreen" />
 </site-conf>

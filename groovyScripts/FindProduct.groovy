@@ -5,21 +5,16 @@ import org.apache.ofbiz.entity.util.EntityQuery
 import org.apache.ofbiz.base.util.Debug
 
 def FindproductDetail() {
-   
-    def result = [:]
+    Debug.logInfo("Fetching product list...", "ProductService")
 
-   
     if (context == null) {
         context = [:]
     }
 
-    Delegator delegator = (Delegator) context.get("delegator")
-    if (!delegator) {
-        delegator = DelegatorFactory.getDelegator("default")
-    } 
+    Delegator delegator = (Delegator) context.get("delegator") ?: DelegatorFactory.getDelegator("default")
 
     String productName = context.get("productName")
-    String productprice = context.get("productprice")
+    String productPrice = context.get("productPrice")
     String productCategory = context.get("productCategory")
     String productFeature = context.get("productFeature")
     
@@ -27,28 +22,41 @@ def FindproductDetail() {
     
     try {
         def query = EntityQuery.use(delegator).from("ProductAndCategoryViewEntity")
-    
+
         if (productName) {
             query = query.where("productName", productName)
         }
-        if(productCategory)
-        {
-            query=query.where("productCategoryId",productCategory)
+        if (productCategory) {
+            query = query.where("productCategoryId", productCategory)
         }
-        if(productFeature)
-        {
-            query=query.where("productFeatureId",productFeature)
+        if (productFeature) {
+            query = query.where("productFeatureId", productFeature)
         }
-        if(productprice)
-        {
-            query=query.where("price",productprice)
+        if (productPrice) {
+            query = query.where("price", productPrice)
         }
-    
-        productlist = query.queryList()
+
+        List productEntities = query.queryList()
+        
+        
+        productlist = productEntities.collect { product ->
+            [
+                productId         : product.getString("productId"), 
+                productName       : product.getString("productName"), 
+                productDescription: product.getString("description") 
+            ]
+        }
+        
     } catch (GenericEntityException e) {
         Debug.logError("Error in FindproductDetail service: " + e, "ProductService")
     }
+
+    Debug.logInfo("Product List Before Setting in Context: " + productlist, "ProductService")
+
+    context.productlist = productlist ?: []  
     
-    result.productlist = productlist
-    return result
+    Debug.logInfo("Product List After Setting in Context: " + context.productlist, "ProductService")
+    
+    return context 
 }
+

@@ -34,7 +34,6 @@ under the License.
                      <screenlet title="Add Ofbiz Demo">
                         <platform-specific>
                             <html><html-template location="component://ProductManagement/webapp/ProductManagement/crud/FinForm.ftl"/></html>
-                           
                         </platform-specific>
                     </screenlet>
             
@@ -43,5 +42,24 @@ under the License.
             </widgets>
         </section>
     </screen>
+
+<screen name="Datascreen">
+    <section>
+        <widgets>
+            
+                    <screenlet title="Fetched Product Data">
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://ProductManagement/webapp/ProductManagement/crud/DisplayFetchedData.ftl"/>
+                            </html>
+                        </platform-specific>
+                    </screenlet>
+               
+        </widgets>
+    </section>
+</screen>
+
+
+
 
 </screens>

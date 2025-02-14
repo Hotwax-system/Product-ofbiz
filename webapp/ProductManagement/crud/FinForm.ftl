@@ -1,30 +1,30 @@
 <form method="post" action="<@ofbizUrl>FindProduct</@ofbizUrl>" name="AddOfbizDemo" class="form-horizontal">
 
     <div class="control-group">
-        <label class="control-label" for="ProductName">Product Name</label>
+        <label class="control-label" for="productName">Product Name</label>
         <div class="controls">
-            <input type="text" id="ProductName" name="ProductName" required>
+            <input type="text" id="productName" name="productName">
         </div>
     </div>
 
     <div class="control-group">
-        <label class="control-label" for="ProductCategory">Product Category</label>
+        <label class="control-label" for="productCategory">Product Category</label>
         <div class="controls">
-            <input type="text" id="ProductCategory" name="ProductCategory" required>
+            <input type="text" id="productCategory" name="productCategory">
         </div>
     </div>
 
     <div class="control-group">
-        <label class="control-label" for="ProductPrice">Product Price</label>
+        <label class="control-label" for="productPrice">Product Price</label>
         <div class="controls">
-            <input type="text" id="ProductPrice" name="ProductPrice" required>
+            <input type="text" id="productPrice" name="productPrice">
         </div>
     </div>
 
     <div class="control-group">
-        <label class="control-label" for="ProductFeature">Product Feature</label>
+        <label class="control-label" for="productFeature">Product Feature</label>
         <div class="controls">
-            <input type="text" id="ProductFeature" name="ProductFeature" required>
+            <input type="text" id="productFeature" name="productFeature">
         </div>
     </div>
 
