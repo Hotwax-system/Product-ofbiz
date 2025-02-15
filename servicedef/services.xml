@@ -30,7 +30,7 @@ under the License.
         </description>
     </service>
 
-
+    <!-- Service for Create the Product -->
     <service name="createProduct" default-entity-name="Product" engine="groovy" invoke="CreateProductDetail"
         location="component://ProductManagement/groovyScripts/CreateProduct.groovy"
         auth="true">
@@ -40,7 +40,7 @@ under the License.
           <attribute name="price" type="BigDecimal" mode="IN" />
     </service>
 
-    <!-- service for update  -->
+    <!-- service for update Product -->
     <service name="UpdateProduct" default-entity-name="Product" engine="groovy"
          location="component://ProductManagement/groovyScripts/UpdateProduct.groovy"
          invoke="UpdateProductDetail" auth="true">
@@ -65,7 +65,7 @@ under the License.
     </service>
 
     <!-- Service For create the virtual-varient relationship -->
-      <service name="Createrelationship" default-entity-name="ProductAssoc" engine="groovy"
+    <service name="assocProductToVirtual" default-entity-name="ProductAssoc" engine="groovy"
          location="component://ProductManagement/groovyScripts/Createrelationship.groovy"
          invoke="RelationShipDetail" auth="true">
         <attribute name="productId" type="String" mode="IN" />
@@ -73,8 +73,8 @@ under the License.
         <attribute name="productAssocTypeId" type="String" mode="IN" />
     </service>
 
-     <!-- Service For Update the virtual-varient relationship -->
-      <service name="UpdateRelationship" default-entity-name="ProductAssoc" engine="groovy"
+    <!-- Service For Update the virtual-varient relationship -->
+    <service name="UpdateRelationship" default-entity-name="ProductAssoc" engine="groovy"
          location="component://ProductManagement/groovyScripts/Updaterelationship.groovy"
          invoke="Updaterelationship" auth="true">
         <attribute name="productId" type="String" mode="IN" />
@@ -82,16 +82,14 @@ under the License.
         <attribute name="productAssocTypeId" type="String" mode="IN" />
     </service>
 
-
+    <!-- Service For Fetch Product -->
     <service name="fetchProductListByGroovy" engine="groovy"
         location="component://ProductManagement/groovyScripts/FindProduct.groovy"
         invoke="FindproductDetail">
         <description>Fetch product details from ProductAndCategoryViewEntity using Groovy</description>
-
         <attribute name="productName" type="String" mode="IN" optional="true" />
         <attribute name="productFeature" type="String" mode="IN" optional="true" />
-        <attribute name="productPrice" type="BigDecimal" mode="IN" optional="true" />  <!-- Fixed
-        incorrect name -->
+        <attribute name="productPrice" type="BigDecimal" mode="IN" optional="true" /> 
         <attribute name="productCategory" type="String" mode="IN" optional="true" />
 
         <attribute name="productlist" type="List" mode="OUT" />

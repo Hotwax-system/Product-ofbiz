@@ -33,33 +33,127 @@ under the License.
                     <decorator-section name="body">
                      <screenlet title="Add Ofbiz Demo">
                         <platform-specific>
-                            <html><html-template location="component://ProductManagement/webapp/ProductManagement/crud/FinForm.ftl"/></html>
+                            <html><html-template location="component://ProductManagement/webapp/ProductManagement/crud/FindForm.ftl"/></html>
                         </platform-specific>
                     </screenlet>
-            
                     </decorator-section>
                 </decorator-screen>
             </widgets>
         </section>
     </screen>
 
-<screen name="Datascreen">
-    <section>
-        <widgets>
-            
-                    <screenlet title="Fetched Product Data">
-                        <platform-specific>
-                            <html>
-                                <html-template location="component://ProductManagement/webapp/ProductManagement/crud/DisplayFetchedData.ftl"/>
-                            </html>
-                        </platform-specific>
-                    </screenlet>
-               
-        </widgets>
-    </section>
-</screen>
+    <!-- Screen For Find product  -->
+    <screen name="Datascreen">
+        <section>
+            <widgets>
+                 <screenlet title="Fetched Product Data">
+                    <platform-specific>
+                        <html>
+                            <html-template location="component://ProductManagement/webapp/ProductManagement/crud/DisplayFetchedData.ftl"/>
+                        </html>
+                    </platform-specific>
+                </screenlet>  
+            </widgets>
+        </section>
+    </screen>
+
+    <!-- Screen For Create Product -->
+    <screen name="CreateProduct">
+        <section>
+            <widgets>
+                <decorator-screen name="ProductManagementCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="Create Product Data">
+                            <platform-specific>
+                                <html>
+                                    <html-template location="component://ProductManagement/webapp/ProductManagement/crud/CreateProduct.ftl"/>
+                                </html>
+                            </platform-specific>
+                        </screenlet> 
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
 
 
+    <!-- Screen For Create Product -->
+    <screen name="UpdateProduct">
+        <section>
+            <widgets>
+                <decorator-screen name="ProductManagementCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="Update Product Data">
+                            <platform-specific>
+                                <html>
+                                    <html-template location="component://ProductManagement/webapp/ProductManagement/crud/UpdateProduct.ftl"/>
+                                </html>
+                            </platform-specific>
+                        </screenlet> 
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+
+    <!-- Screen For Update Feature -->
+    <screen name="UpdateFeature">
+        <section>
+           <widgets>
+                <decorator-screen name="ProductManagementCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="Update Feature Data">
+                            <platform-specific>
+                                <html>
+                                    <html-template location="component://ProductManagement/webapp/ProductManagement/crud/UpdateFeature.ftl"/>
+                                </html>
+                            </platform-specific>
+                        </screenlet> 
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+     <!-- Screen For assocProductToVirtual  -->
+    <screen name="assocProductToVirtual">
+        <section>
+           <widgets>
+                <decorator-screen name="ProductManagementCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="Create Relationship Data">
+                            <platform-specific>
+                                <html>
+                                    <html-template location="component://ProductManagement/webapp/ProductManagement/crud/CreateRelationship.ftl"/>
+                                </html>
+                            </platform-specific>
+                        </screenlet> 
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    
+    <!-- Screen For UpdateRelationship  -->
+    <screen name="UpdateRelationship">
+        <section>
+           <widgets>
+                <decorator-screen name="ProductManagementCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="Create Relationship Data">
+                            <platform-specific>
+                                <html>
+                                    <html-template location="component://ProductManagement/webapp/ProductManagement/crud/UpdateRelationship.ftl"/>
+                                </html>
+                            </platform-specific>
+                        </screenlet> 
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
 
 
 </screens>

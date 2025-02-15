@@ -46,17 +46,69 @@ under the License.
         <response name="success" type="view" value="main" />
     </request-map>
 
+    <!--  FindProduct -->
     <request-map uri="FindProduct">
         <security https="true" auth="true" />
         <event type="service" invoke="fetchProductListByGroovy"/>
         <response name="success" type="view" value="screenrender" />
-        
     </request-map>
 
+    <!--  CreateProduct -->
+    <request-map uri="CreateProduct">
+        <security https="true" auth="true" />
+        <event type="service" invoke="createProduct"/>
+        <response name="success" type="view" value="CreateProduct"/>
+    </request-map>
+
+    <!--  UpdateProduct -->
+    <request-map uri="UpdateProduct">
+        <security https="true" auth="true" />
+        <event type="service" invoke="UpdateProduct"/>
+        <response name="success" type="view" value="Updateproduct"/>
+    </request-map>
+
+    <!--  UpdateFeature -->
+    <request-map uri="UpdateFeature">
+        <security https="true" auth="true" />
+        <event type="service" invoke="UpdateFeature"/>
+        <response name="success" type="view" value="UpdateFeature"/>
+    </request-map>
+
+    <!--  Create virtual-varient relationship -->
+    <request-map uri="assocProductToVirtual">
+        <security https="true" auth="true" />
+        <event type="service" invoke="assocProductToVirtual"/>
+        <response name="success" type="view" value="assocProductToVirtual"/>
+    </request-map>
+
+
+    <!--  Update virtual-varient relationship -->
+    <request-map uri="UpdateRelationship">
+        <security https="true" auth="true" />
+        <event type="service" invoke="UpdateRelationship"/>
+        <response name="success" type="view" value="UpdateRelationship"/>
+    </request-map>
+
+    
     <!-- View Mappings -->
     <view-map name="main" type="screen"
         page="component://ProductManagement/widget/ProductManagementScreens.xml#main" />
 
     <view-map name="screenrender" type="screen"
         page="component://ProductManagement/widget/ProductManagementScreens.xml#Datascreen" />
+    
+    <view-map name="CreateProduct" type="screen"
+        page="component://ProductManagement/widget/ProductManagementScreens.xml#CreateProduct" />
+
+    <view-map name="Updateproduct" type="screen"
+        page="component://ProductManagement/widget/ProductManagementScreens.xml#UpdateProduct" />
+
+    <view-map name="UpdateFeature" type="screen"
+        page="component://ProductManagement/widget/ProductManagementScreens.xml#UpdateFeature" />
+
+    <view-map name="assocProductToVirtual" type="screen"
+        page="component://ProductManagement/widget/ProductManagementScreens.xml#assocProductToVirtual" />
+    
+    <view-map name="UpdateRelationship" type="screen"
+        page="component://ProductManagement/widget/ProductManagementScreens.xml#UpdateRelationship" />
 </site-conf>

@@ -11,9 +11,6 @@ def UpdateFeatureDetail()
 
 
     Delegator delegator = (Delegator) context.delegator
-
-  
-        
           GenericValue productFeatureAppl = delegator.makeValue("ProductFeatureAppl")
           GenericValue productFeatureApplfind = delegator.findByAnd("ProductFeatureAppl", ["productId": context.productId,"productFeatureId":context.productFeatureoldId], ["fromDate DESC"],false)?.get(0)
           if(productFeatureApplfind)
