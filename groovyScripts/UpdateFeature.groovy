@@ -15,7 +15,7 @@ def UpdateFeatureDetail()
   
         
           GenericValue productFeatureAppl = delegator.makeValue("ProductFeatureAppl")
-          GenericValue productFeatureApplfind = delegator.findByAnd("ProductFeatureAppl", ["productId": context.productId,"productFeatureId":context.productFeatureoldId], null,false)?.get(0)
+          GenericValue productFeatureApplfind = delegator.findByAnd("ProductFeatureAppl", ["productId": context.productId,"productFeatureId":context.productFeatureoldId], ["fromDate DESC"],false)?.get(0)
           if(productFeatureApplfind)
           {
             productFeatureApplfind.set("thruDate",new Timestamp(System.currentTimeMillis()))

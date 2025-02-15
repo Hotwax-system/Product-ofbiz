@@ -64,6 +64,23 @@ under the License.
         <attribute name="productFeatureApplTypeId" type="String" mode="IN" optional="true" />
     </service>
 
+    <!-- Service For create the virtual-varient relationship -->
+      <service name="Createrelationship" default-entity-name="ProductAssoc" engine="groovy"
+         location="component://ProductManagement/groovyScripts/Createrelationship.groovy"
+         invoke="RelationShipDetail" auth="true">
+        <attribute name="productId" type="String" mode="IN" />
+        <attribute name="productIdTo" type="String" mode="IN" />
+        <attribute name="productAssocTypeId" type="String" mode="IN" />
+    </service>
+
+     <!-- Service For Update the virtual-varient relationship -->
+      <service name="UpdateRelationship" default-entity-name="ProductAssoc" engine="groovy"
+         location="component://ProductManagement/groovyScripts/Updaterelationship.groovy"
+         invoke="Updaterelationship" auth="true">
+        <attribute name="productId" type="String" mode="IN" />
+        <attribute name="productIdTo" type="String" mode="IN" />
+        <attribute name="productAssocTypeId" type="String" mode="IN" />
+    </service>
 
 
     <service name="fetchProductListByGroovy" engine="groovy"
