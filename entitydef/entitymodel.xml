@@ -85,8 +85,4 @@ under the License.
             <key-map field-name="productFeatureId"/>
         </relation>
     </view-entity>
-
-
-
-
 </entitymodel>

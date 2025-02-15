@@ -31,36 +31,41 @@ under the License.
     </service>
 
 
-    <service name="createProduct" default-entity-name="Product" engine="entity-auto" invoke="create"
+    <service name="createProduct" default-entity-name="Product" engine="groovy" invoke="CreateProductDetail"
+        location="component://ProductManagement/groovyScripts/CreateProduct.groovy"
         auth="true">
         <description>Create an Ofbiz Demo record</description>
-        <auto-attributes include="pk" mode="OUT" optional="false" />
-        <auto-attributes include="nonpk" mode="IN" optional="false" />
-        <override name="comments" optional="true" />
+          <attribute name="productName" type="String" mode="IN" />
+          <attribute name="productCategoryId" type="String" mode="IN" />
+          <attribute name="price" type="BigDecimal" mode="IN" />
     </service>
 
     <!-- service for update  -->
-     <!-- <service name="createProduct" default-entity-name="Product" engine="entity-auto" invoke="update"
-        auth="true">
-        <description>Create an Ofbiz Demo record</description>
-        <auto-attributes include="pk" mode="OUT" optional="false" />
-        <auto-attributes include="nonpk" mode="IN" optional="false" />
-        <override name="comments" optional="true" />
-    </service> -->
+        <service name="UpdateProduct" default-entity-name="Product" engine="groovy"
+            location="component://ProductManagement/groovyScripts/UpdateProduct.groovy"
+           
+            invoke="UpdatePRoductDetail"
+            auth="true">
+            <description>Update a Product record</description>
+            <attribute name="productId" type="String" mode="IN" />
+            <auto-attributes include="nonpk" mode="IN" optional="true" />
+        </service>
 
- <service name="fetchProductListByGroovy" engine="groovy"
+
+
+    <service name="fetchProductListByGroovy" engine="groovy"
         location="component://ProductManagement/groovyScripts/FindProduct.groovy"
         invoke="FindproductDetail">
-    <description>Fetch product details from ProductAndCategoryViewEntity using Groovy</description>
+        <description>Fetch product details from ProductAndCategoryViewEntity using Groovy</description>
 
-    <attribute name="productName" type="String" mode="IN" optional="true" />
-    <attribute name="productFeature" type="String" mode="IN" optional="true" />
-    <attribute name="productPrice" type="BigDecimal" mode="IN" optional="true" />  <!-- Fixed incorrect name -->
-    <attribute name="productCategory" type="String" mode="IN" optional="true" />
+        <attribute name="productName" type="String" mode="IN" optional="true" />
+        <attribute name="productFeature" type="String" mode="IN" optional="true" />
+        <attribute name="productPrice" type="BigDecimal" mode="IN" optional="true" />  <!-- Fixed
+        incorrect name -->
+        <attribute name="productCategory" type="String" mode="IN" optional="true" />
 
-    <attribute name="productlist" type="List" mode="OUT" />
-</service>
-
+        <attribute name="productlist" type="List" mode="OUT" />
+    </service>
 
 
 </services>
