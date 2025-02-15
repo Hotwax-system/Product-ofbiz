@@ -44,11 +44,25 @@ under the License.
     <service name="UpdateProduct" default-entity-name="Product" engine="groovy"
          location="component://ProductManagement/groovyScripts/UpdateProduct.groovy"
          invoke="UpdateProductDetail" auth="true">
-    <description>Update a Product record</description>
-    <attribute name="productId" type="String" mode="IN" />
-    <attribute name="productName" type="String" mode="IN" />
-    <attribute name="productPrice" type="BigDecimal" mode="IN" />
-</service>
+        <description>Update a Product record</description>
+        <attribute name="productId" type="String" mode="IN" />
+        <attribute name="productName" type="String" mode="IN" />
+        <attribute name="productPrice" type="BigDecimal" mode="IN" optional="true"/>
+        <attribute name="productFeatureoldId" type="String" mode="IN" optional="true"/>
+        <attribute name="ProductFeatureNewId" type="String" mode="IN" optional="true" />
+        <attribute name="productFeatureApplTypeId" type="String" mode="IN" optional="true" />
+    </service>
+
+     <!-- service for update Feature -->
+    <service name="UpdateFeature" default-entity-name="ProductFeatureAppl" engine="groovy"
+         location="component://ProductManagement/groovyScripts/UpdateFeature.groovy"
+         invoke="UpdateFeatureDetail" auth="true">
+        <description>Update a Product record</description>
+        <attribute name="productId" type="String" mode="IN" />
+        <attribute name="productFeatureoldId" type="String" mode="IN" optional="true"/>
+        <attribute name="productFeatureNewId" type="String" mode="IN" optional="true" />
+        <attribute name="productFeatureApplTypeId" type="String" mode="IN" optional="true" />
+    </service>
 
 
 

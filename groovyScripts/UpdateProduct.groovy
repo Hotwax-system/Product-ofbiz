@@ -5,7 +5,7 @@ import java.math.BigDecimal
 import java.sql.Timestamp
 import org.apache.ofbiz.entity.DelegatorFactory
 import org.apache.ofbiz.base.util.Debug
-import org.apache.ofbiz.entity.Delegator
+
 
 def UpdateProductDetail() {
    
@@ -15,14 +15,23 @@ def UpdateProductDetail() {
     GenericValue productprice = delegator.findByAnd("ProductPrice", ["productId": context.productId], null,false)?.get(0)
 
     if (productData && productprice) {
-        productData.set("productName", context.productName)
+        if(context.productName)
+        {
+            productData.set("productName", context.productName)
+        }
+        
         delegator.store(productData)
 
         productprice.set("thruDate",new Timestamp(System.currentTimeMillis()))
         delegator.store(productprice)
 
-        GenericValue productPricecreate = delegator.makeValue("ProductPrice")
+        if(context.productPrice)
+        {
+            GenericValue productPricecreate = delegator.makeValue("ProductPrice")
+
+       
         productPricecreate.set("productId", context.productId)
+        
         productPricecreate.set("productPriceTypeId", "DEFAULT_PRICE")
         productPricecreate.set("productPricePurposeId", "PURCHASE")
         productPricecreate.set("currencyUomId", "USD")
@@ -30,6 +39,9 @@ def UpdateProductDetail() {
         productPricecreate.set("price", new BigDecimal(context.productPrice ?: 0))
         productPricecreate.set("fromDate", new Timestamp(System.currentTimeMillis()))
         delegator.create(productPricecreate)
+        }
+
+       
 
         return success("Product updated successfully")
     }
