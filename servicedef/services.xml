@@ -41,15 +41,14 @@ under the License.
     </service>
 
     <!-- service for update  -->
-        <service name="UpdateProduct" default-entity-name="Product" engine="groovy"
-            location="component://ProductManagement/groovyScripts/UpdateProduct.groovy"
-           
-            invoke="UpdatePRoductDetail"
-            auth="true">
-            <description>Update a Product record</description>
-            <attribute name="productId" type="String" mode="IN" />
-            <auto-attributes include="nonpk" mode="IN" optional="true" />
-        </service>
+    <service name="UpdateProduct" default-entity-name="Product" engine="groovy"
+         location="component://ProductManagement/groovyScripts/UpdateProduct.groovy"
+         invoke="UpdateProductDetail" auth="true">
+    <description>Update a Product record</description>
+    <attribute name="productId" type="String" mode="IN" />
+    <attribute name="productName" type="String" mode="IN" />
+    <attribute name="productPrice" type="BigDecimal" mode="IN" />
+</service>
 
 
 
