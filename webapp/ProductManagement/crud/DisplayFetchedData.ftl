@@ -7,9 +7,9 @@
         </tr>
         <#list parameters.productlist as product>
             <tr>
-                <td>${product.productId!''}</td>
-                <td>${product.productName!''}</td>
-                <td>${product.productDescription!''}</td>
+                <td>${product.productId}</td>
+                <td>${product.productName}</td>
+                <td>${product.productDescription}</td>
             </tr>
         </#list>
     </table>
