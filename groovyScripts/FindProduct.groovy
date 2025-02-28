@@ -11,7 +11,7 @@ def FindproductDetail() {
         context = [:]
     }
 
-    Delegator delegator = (Delegator) context.get("delegator") ?: DelegatorFactory.getDelegator("default")
+    Delegator delegator = (Delegator) context.get("delegator")
 
     String productName = context.get("productName")
     String productPrice = context.get("productPrice")
