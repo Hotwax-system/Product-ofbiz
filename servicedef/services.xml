@@ -49,7 +49,7 @@ under the License.
         <attribute name="productName" type="String" mode="IN" />
         <attribute name="productPrice" type="BigDecimal" mode="IN" optional="true"/>
         <attribute name="productFeatureoldId" type="String" mode="IN" optional="true"/>
-        <attribute name="ProductFeatureNewId" type="String" mode="IN" optional="true" />
+<!--         <attribute name="ProductFeatureNewId" type="String" mode="IN" optional="true" /> -->
         <attribute name="productFeatureApplTypeId" type="String" mode="IN" optional="true" />
     </service>
 
