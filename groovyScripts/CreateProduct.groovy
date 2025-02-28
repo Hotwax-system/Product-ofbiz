@@ -13,7 +13,7 @@ def CreateProductDetail() {
         GenericValue product = delegator.makeValue("Product")
         product.set("productId", productId)
         product.set("productName", context.productName)
-        product.set("internalName", context.internalName ?: productId)
+        product.set("internalName", context.internalName)
         delegator.create(product)
 
         String productPriceId = delegator.getNextSeqId("ProductPrice")
@@ -23,7 +23,7 @@ def CreateProductDetail() {
         productPrice.set("productPricePurposeId", "PURCHASE")
         productPrice.set("currencyUomId", "USD")
         productPrice.set("productStoreGroupId", "_NA_")
-        productPrice.set("price", new BigDecimal(context.price ?: 0))
+        productPrice.set("price", context.price))
         productPrice.set("fromDate", new Timestamp(System.currentTimeMillis()))
         delegator.create(productPrice)
 
