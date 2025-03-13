@@ -14,9 +14,9 @@ def FindproductDetail() {
     Delegator delegator = (Delegator) context.get("delegator") ?: DelegatorFactory.getDelegator("default")
 
     String productName = context.get("productName")
-    String productPrice = context.get("productPrice")
-    String productCategory = context.get("productCategory")
+    String productPricestring = context.get("productPrice")
     String productFeature = context.get("productFeature")
+    def productPrice = productPricestring ? new BigDecimal(productPricestring) : BigDecimal.ZERO
     
     List productlist = []
     
@@ -26,14 +26,15 @@ def FindproductDetail() {
         if (productName) {
             query = query.where("productName", productName)
         }
-        if (productCategory) {
-            query = query.where("productCategoryId", productCategory)
+        if(productId)
+        {
+             query = query.where("productId", productId)
         }
         if (productFeature) {
-            query = query.where("productFeatureId", productFeature)
+            query = query.where("productFeatureDescription", productFeature)
         }
         if (productPrice) {
-            query = query.where("price", productPrice)
+            query = query.where("productPrice", productPrice)
         }
 
         List productEntities = query.queryList()

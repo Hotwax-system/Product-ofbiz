@@ -8,7 +8,6 @@ import org.apache.ofbiz.base.util.Debug
  
 def Updaterelationship()
 {
-  
           Delegator delegator = (Delegator) context.delegator
           GenericValue productData = delegator.findByAnd("ProductAssoc", ["productId": context.productId],["fromDate DESC"],false)?.get(0)         
           productData.set("thruDate",new Timestamp(System.currentTimeMillis()))

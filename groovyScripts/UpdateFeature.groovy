@@ -8,15 +8,14 @@ import org.apache.ofbiz.base.util.Debug
  
 def UpdateFeatureDetail()
 {
-
-
     Delegator delegator = (Delegator) context.delegator
           GenericValue productFeatureAppl = delegator.makeValue("ProductFeatureAppl")
-          GenericValue productFeatureApplfind = delegator.findByAnd("ProductFeatureAppl", ["productId": context.productId,"productFeatureId":context.productFeatureoldId], ["fromDate DESC"],false)?.get(0)
+          List<GenericValue> productFeatureApplfind = delegator.findByAnd("ProductFeatureAppl", ["productId": context.productId,"productFeatureId":context.productFeatureoldId], ["fromDate DESC"],false)
           if(productFeatureApplfind)
           {
-            productFeatureApplfind.set("thruDate",new Timestamp(System.currentTimeMillis()))
-            delegator.store(productFeatureApplfind)
+            GenericValue productFeatureApplfindnew=productFeatureApplfind.get(0)
+            productFeatureApplfindnew.set("thruDate",new Timestamp(System.currentTimeMillis()))
+            delegator.store(productFeatureApplfindnew)
           }
 
            productFeatureAppl.set("productFeatureId",context.productFeatureNewId)
@@ -25,5 +24,4 @@ def UpdateFeatureDetail()
            productFeatureAppl.set("productFeatureApplTypeId",context.productFeatureApplTypeId)
            delegator.create(productFeatureAppl)
 
-        
 }

@@ -1,16 +1,17 @@
 <form method="post" action="<@ofbizUrl>FindProduct</@ofbizUrl>" name="AddOfbizDemo" class="form-horizontal">
 
-    <div class="control-group">
-        <label class="control-label" for="productName">Product Name</label>
+   
+     <div class="control-group">
+        <label class="control-label" for="productId">Product Id</label>
         <div class="controls">
-            <input type="text" id="productName" name="productName">
+            <input type="text" id="productId" name="productId">
         </div>
     </div>
 
     <div class="control-group">
-        <label class="control-label" for="productCategory">Product Category</label>
+        <label class="control-label" for="productName">Product Name</label>
         <div class="controls">
-            <input type="text" id="productCategory" name="productCategory">
+            <input type="text" id="productName" name="productName">
         </div>
     </div>
 

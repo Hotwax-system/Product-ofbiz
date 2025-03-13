@@ -12,7 +12,7 @@ def UpdateProductDetail() {
     Delegator delegator = (Delegator) context.delegator
 
     GenericValue productData = delegator.findOne("Product", ["productId": context.productId], false)
-    GenericValue productprice = delegator.findByAnd("ProductPrice", ["productId": context.productId], null,false)?.get(0)
+    GenericValue productprice = delegator.findByAnd("ProductPrice", ["productId": context.productId],["fromDate DESC"],false)?.get(0)
 
     if (productData && productprice) {
         if(context.productName)
@@ -40,9 +40,7 @@ def UpdateProductDetail() {
         productPricecreate.set("fromDate", new Timestamp(System.currentTimeMillis()))
         delegator.create(productPricecreate)
         }
-
-       
-
+        
         return success("Product updated successfully")
     }
     

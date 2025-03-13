@@ -34,51 +34,32 @@ under the License.
         
         <!-- Base Entities -->
         <member-entity entity-alias="P" entity-name="Product"/>
-        <member-entity entity-alias="PC" entity-name="ProductCategory"/>
-        <member-entity entity-alias="PCM" entity-name="ProductCategoryMember"/>
         <member-entity entity-alias="PP" entity-name="ProductPrice"/>
         <member-entity entity-alias="PF" entity-name="ProductFeature"/>
         <member-entity entity-alias="PFA" entity-name="ProductFeatureAppl"/>
         
         <!-- Alias Fields -->
         <alias-all entity-alias="P"/>
-        <alias-all entity-alias="PC"/>
-        <alias-all entity-alias="PCM">
-            <exclude field="description"/>
-        </alias-all>
-        <alias name="categoryMembershipDescription" entity-alias="PCM" field="description"/>
         <alias name="productPrice" entity-alias="PP" field="price"/>
         <alias name="productFeatureDescription" entity-alias="PF" field="description"/>
         
         <!-- View Links (Joining Tables) -->
-        <view-link entity-alias="P" rel-entity-alias="PCM">
+
+        <view-link entity-alias="P" rel-entity-alias="PP" rel-optional="true">
             <key-map field-name="productId"/>
         </view-link>
 
-        <view-link entity-alias="PCM" rel-entity-alias="PC">
-            <key-map field-name="productCategoryId"/>
-        </view-link>
-
-        <view-link entity-alias="P" rel-entity-alias="PP">
+        <view-link entity-alias="P" rel-entity-alias="PFA" rel-optional="true">
             <key-map field-name="productId"/>
         </view-link>
 
-        <view-link entity-alias="P" rel-entity-alias="PFA">
-            <key-map field-name="productId"/>
-        </view-link>
-
-        <view-link entity-alias="PFA" rel-entity-alias="PF">
+        <view-link entity-alias="PFA" rel-entity-alias="PF" rel-optional="true">
             <key-map field-name="productFeatureId"/>
         </view-link>
 
         <!-- Relations -->
         <relation type="one-nofk" rel-entity-name="Product">
             <key-map field-name="productId"/>
-        </relation>
-
-        <relation type="one-nofk" rel-entity-name="ProductCategoryMember">
-            <key-map field-name="productId"/>
-            <key-map field-name="productCategoryId"/>
         </relation>
         <relation type="one-nofk" rel-entity-name="ProductFeatureAppl">
             <key-map field-name="productId"/>

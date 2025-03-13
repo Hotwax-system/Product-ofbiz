@@ -142,7 +142,7 @@ under the License.
            <widgets>
                 <decorator-screen name="ProductManagementCommonDecorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
-                        <screenlet title="Create Relationship Data">
+                        <screenlet title="Update Relationship Data">
                             <platform-specific>
                                 <html>
                                     <html-template location="component://ProductManagement/webapp/ProductManagement/crud/UpdateRelationship.ftl"/>
